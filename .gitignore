@@ -1,0 +1,18 @@
+# Composer
+**/vendor/
+**/composer.lock
+
+# Ambiente e arquivos sensíveis
+.env
+*.pem
+
+# IDEs e editores
+.vscode/
+.idea/
+
+# Logs, cache e arquivos temporários
+*.log
+*.cache
+*.tmp
+*.bak
+.phpunit.result.cache
