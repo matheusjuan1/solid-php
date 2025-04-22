@@ -1,0 +1,15 @@
+{
+    "name": "matheus/app_mensageiro",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matheus Juan",
+            "email": "matheusjuan.f@outlook.com"
+        }
+    ],
+    "require": {}
+}
