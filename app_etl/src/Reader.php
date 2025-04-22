@@ -2,8 +2,6 @@
 
 namespace src;
 
-use src\File;
-
 class Reader
 {
 
@@ -36,16 +34,18 @@ class Reader
     {
         $path = $this->getDirectory() . '/' . $this->getFile();
 
-        $file = new File();
-
         $extension = explode('.', $this->getFile());
 
-        if ($extension[1] == 'csv') {
-            $file->readCSVFile($path);
-        } else if ($extension[1] == 'txt') {
-            $file->readTXTFile($path);
-        }
+        $pathClass = '\src\extractor\\' . ucfirst($extension[1]);
 
-        return $file->getData();
+        return call_user_func_array(
+            [
+                new $pathClass,
+                'readFile'
+            ],
+            [
+                $path
+            ]
+        );
     }
 }
