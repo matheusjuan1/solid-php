@@ -8,21 +8,23 @@ class Messenger
     private $channel;
 
     // methods
-    public function getChannel(): string
+    public function __construct(IMessengeToken $channel)
+    {
+        $this->setChannel($channel);
+    }
+
+    public function getChannel(): IMessengeToken
     {
         return $this->channel;
     }
 
-    public function setChannel($channel): void
+    public function setChannel(IMessengeToken $channel): void
     {
         $this->channel = $channel;
     }
 
     public function sendToken(): void
     {
-        $path = '\src\\' . ucfirst($this->getChannel());
-
-        $obj = new $path;
-        $obj->send();
+        $this->getChannel()->send();
     }
 }
