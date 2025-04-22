@@ -1,6 +1,6 @@
 # 🛒 Carrinho de Compras — Princípio da Responsabilidade Única (SRP)
 
-Este projeto demonstra a aplicação do primeiro princípio SOLID — **Single Responsibility Principle (SRP)** — em PHP. O SRP afirma que uma classe deve ter **apenas uma única responsabilidade**, ou seja, **um único motivo para mudar**.
+Este projeto demonstra a aplicação do primeiro princípio SOLID — **Single Responsibility Principle (SRP)**. O SRP afirma que uma classe deve ter **apenas uma única responsabilidade**, ou seja, **um único motivo para mudar**.
 
 ---
 
