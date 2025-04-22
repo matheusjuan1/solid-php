@@ -1,24 +1,30 @@
 <?php
 
-use src\Rectangle;
-use src\Square;
+use src\Polygon;
+use src\polygons\Rectangle;
+use src\polygons\Square;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$rectangle = new Rectangle();
-$rectangle->setHeight(5);
-$rectangle->setWidth(10);
 
-echo '<h3>Área do retângulo: ' . $rectangle->getArea() . '</h3>';
+$polygon = new Polygon();
+$polygon->setShape(new Rectangle());
+$polygon->getShape()->setHeight(5);
+$polygon->getShape()->setWidth(10);
+
+echo '<pre>';
+print_r($polygon);
+echo '</pre>';
+
+echo '<h3>Área do retângulo: ' . $polygon->getArea() . '</h3>';
 
 
-$square = new Square();
-$square->setHeight(5);
+$polygon = new Polygon();
+$polygon->setShape(new Square());
+$polygon->getShape()->setHeight(5);
 
-echo '<h3>Área do quadrado: ' . $square->getArea() . '</h3>';
+echo '<pre>';
+print_r($polygon);
+echo '</pre>';
 
-$rectangle = new Square();
-$rectangle->setHeight(5);
-$rectangle->setWidth(10);
-
-echo '<h3>LSP - Área do retângulo: ' . $rectangle->getArea() . '</h3>';
+echo '<h3>Área do quadrado: ' . $polygon->getArea() . '</h3>';
