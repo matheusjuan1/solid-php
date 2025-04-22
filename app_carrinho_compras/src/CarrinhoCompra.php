@@ -1,20 +1,19 @@
 <?php
 
-namespace App;
+namespace src;
+
+use src\Item;
 
 class CarrinhoCompra
 {
+
     // attributes
     private $items;
-    private $status;
-    private $total;
 
     // methods
     public function __construct()
     {
         $this->items = [];
-        $this->status = 'open';
-        $this->total = 0;
     }
 
     public function getItems()
@@ -22,37 +21,10 @@ class CarrinhoCompra
         return $this->items;
     }
 
-    public function addItem(string $item, float $value)
+    public function addItem(Item $item)
     {
-        array_push($this->items, ["item" => $item, "value" => $value]);
-        $this->total += $value;
+        array_push($this->items, $item);
         return true;
-    }
-
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    public function confirmOrder()
-    {
-        if ($this->validateCart()) {
-            $this->status = 'closed';
-            $this->sendConfirmationEmail();
-
-            return true;
-        }
-        return false;
-    }
-
-    public function sendConfirmationEmail()
-    {
-        echo '<br />... envia e-mail de confirmação ... <br />';
     }
 
     public function validateCart()

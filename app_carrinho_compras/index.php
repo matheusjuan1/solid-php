@@ -2,29 +2,61 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-use App\CarrinhoCompra;
+use src\CarrinhoCompra;
+use src\Item;
+use src\Order;
+use src\EmailService;
 
-$carrinho1 = new CarrinhoCompra();
-print_r($carrinho1->getItems());
-echo 'Valor Total: ' . $carrinho1->getTotal();
+$order = new Order();
 
-$carrinho1->addItem('Bicicleta', 750.10);
-$carrinho1->addItem('Geladeira', 1950.99);
-$carrinho1->addItem('Tapete', 350.00);
+$item1 = new Item();
+$item2 = new Item();
 
-echo "<br />";
-print_r($carrinho1->getItems());
-echo 'Valor Total recalculado: ' . $carrinho1->getTotal();
+$item1->setDescription('Bicicleta');
+$item1->setValue(500.0);
 
-echo "<br />";
-echo 'status: ' . $carrinho1->getStatus();
+$item2->setDescription('Televisão');
+$item2->setValue(1200.0);
 
-echo "<br />";
-if ($carrinho1->confirmOrder()) {
-    echo 'Pedido realizado com sucesso!';
-} else {
-    echo 'Erro na confirmação do pedido.';
+
+echo '<h4>Pedido sem itens</h4>';
+echo '<pre>';
+print_r($order);
+echo '</pre>';
+
+$order->getShoppingCart()->addItem($item1);
+$order->getShoppingCart()->addItem($item2);
+
+echo '<h4>Pedido com itens</h4>';
+echo '<pre>';
+print_r($order);
+echo '</pre>';
+
+echo '<h4>Itens do carrinho</h4>';
+echo '<pre>';
+print_r($order->getShoppingCart()->getItems());
+echo '</pre>';
+
+echo '<h4>Valor do pedido</h4>';
+$total = 0;
+foreach ($order->getShoppingCart()->getItems() as $key => $item) {
+    $total += $item->getValue();
+};
+echo $total;
+
+echo '<h4>Carrinho está valido?</h4>';
+echo $order->getShoppingCart()->validateCart();
+
+echo '<h4>Status pedido</h4>';
+echo $order->getStatus();
+
+echo '<h4>Confirmar pedido</h4>';
+echo $order->confirmOrder();
+
+echo '<h4>Status pedido</h4>';
+echo $order->getStatus();
+
+echo '<h4>E-mail</h4>';
+if ($order->getStatus() == 'confirmed') {
+    echo EmailService::sendEmail();
 }
-
-echo "<br />";
-echo 'status: ' . $carrinho1->getStatus();
