@@ -1,4 +1,4 @@
-# 📐 Cálculo de Área — Princípio da Substituição de Liskov (LSP)
+# 📐 Polígonos — Princípio da Substituição de Liskov (LSP)
 
 Este projeto demonstra a aplicação do terceiro princípio SOLID — **Liskov Substitution Principle (LSP)**. O LSP afirma que **classes derivadas devem poder ser substituídas por suas classes base sem alterar o comportamento esperado do programa**.
 
