@@ -23,6 +23,7 @@ Agora, cada classe implementa **somente as interfaces relevantes**, mantendo o c
 ```mermaid
 classDiagram
     class IRegister {
+        <<interface>>
         + save()
         + registerLog(log)
         + sendNotification(notification)
@@ -56,14 +57,17 @@ classDiagram
 ```mermaid
 classDiagram
     class IRegister {
+        <<interface>>
         + save()
     }
 
     class ILog {
+        <<interface>>
         + registerLog(log)
     }
 
     class INotification {
+        <<interface>>
         + sendNotification(notification)
     }
 
