@@ -29,9 +29,4 @@ class Rectangle
     {
         return $this->height;
     }
-
-    public function getArea(): float
-    {
-        return $this->getHeight() * $this->getWidth();
-    }
 }
